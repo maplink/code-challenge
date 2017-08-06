@@ -4,6 +4,9 @@ public class LocationBounds {
 	private Coordinate southWest;
 	private Coordinate northEast;
 	
+	public LocationBounds(){
+	}
+	
 	public LocationBounds(Coordinate southWest, Coordinate northEast){
 		this.southWest = southWest;
 		this.northEast = northEast;

@@ -12,6 +12,8 @@ import static org.mockito.BDDMockito.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.dc.gth.batplatform.config.AppConfiguration;
 import com.dc.gth.batplatform.model.Coordinate;
 import com.dc.gth.batplatform.model.LocationBounds;
 import com.dc.gth.batplatform.model.Place;
@@ -23,15 +25,19 @@ public class PlaceServiceTests {
 	GeoutilsService geoutilsService;
 	
 	@Inject
+	AppConfiguration appConfiguration;
+	
+	@Inject
 	PlacesService placeService;
 	
 	@Test
 	public void shouldGetNearbyPlacesInsideGotham(){
 		Coordinate requestedLocation = new Coordinate(40.75661990450191, -73.98845672607422);
-		LocationBounds gothamBounds = new LocationBounds(new Coordinate(40.746422, -73.994753), new Coordinate(40.763328,-73.968039));
+		LocationBounds gothamBounds = this.appConfiguration.getGothamBounds();
+		Integer radiusSearchLimit = this.appConfiguration.getRadiusPlaceSearch();
 		given(this.geoutilsService.containsLocation(any(), any())).willReturn(true);
 		
-		List<Place> places = this.placeService.getNearbyPlaces(requestedLocation, 3000, gothamBounds).collect(Collectors.toList());
+		List<Place> places = this.placeService.getNearbyPlaces(requestedLocation, radiusSearchLimit, gothamBounds).collect(Collectors.toList());
 
 		assertThat(places.isEmpty()).isFalse();
 		assertThat(places).filteredOnNull("name").isEmpty();
