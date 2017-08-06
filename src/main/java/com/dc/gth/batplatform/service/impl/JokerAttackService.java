@@ -40,7 +40,7 @@ public class JokerAttackService implements VillainAttackService{
 	
 	@Override
 	public ResultAttack calculateVillainAttack(Coordinate villainLocation) {
-		Stream<Place> targetPlaces = this.placesService.getNearbyPlaces(villainLocation, this.appConfiguration.getRadiusPlaceSearch(), this.appConfiguration.getGothamBounds());
+		Stream<Place> targetPlaces = this.placesService.getNearbyPlaces(villainLocation, this.appConfiguration.getRadiusPlacesSearch(), this.appConfiguration.getGothamBounds());
 		Collection<TargetAttack> targets = targetPlaces
 				.map(target -> new TargetAttack(target.getName(),target.getLocation(), this.calculateAttackProbability(villainLocation, target.getLocation())) )
 				.collect(Collectors.toList());
@@ -51,7 +51,7 @@ public class JokerAttackService implements VillainAttackService{
 	public Double calculateAttackProbability(Coordinate villainLocation, Coordinate location) {
 		Double distance = geoutilsService.haversineDistance(villainLocation, location);
 		Integer jokerRadiusAttack = this.appConfiguration.getRadiusJokerAttack();
-		Integer radiusSearchLimit = this.appConfiguration.getRadiusJokerAttack();
+		Integer radiusSearchLimit = this.appConfiguration.getRadiusPlacesSearch();
 		
 		if(jokerRadiusAttack >= distance)
 			return (jokerRadiusAttack - distance)/jokerRadiusAttack;

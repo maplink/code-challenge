@@ -8,41 +8,46 @@ import com.dc.gth.batplatform.model.LocationBounds;
 @Component
 @ConfigurationProperties("app")
 public class AppConfiguration {
-	private Integer radiusPlaceSearch;
+	private Integer radiusPlacesSearch;
 	private Integer radiusJokerAttack;
 	private LocationBounds gothamBounds;
-	private String googleApikey;
+	private String googleApiKey;
 	
-	public Integer getRadiusPlaceSearch() {
-		return radiusPlaceSearch;
+	public Integer getRadiusPlacesSearch() {
+		return radiusPlacesSearch;
 	}
-	
-	public void setRadiusPlaceSearch(Integer radiusPlaceSearch) {
-		this.radiusPlaceSearch = radiusPlaceSearch;
+
+	public void setRadiusPlacesSearch(Integer radiusPlacesSearch) {
+		this.radiusPlacesSearch = radiusPlacesSearch;
 	}
-	
+
 	public Integer getRadiusJokerAttack() {
 		return radiusJokerAttack;
 	}
-	
+
 	public void setRadiusJokerAttack(Integer radiusJokerAttack) {
 		this.radiusJokerAttack = radiusJokerAttack;
 	}
-	
+
 	public LocationBounds getGothamBounds() {
 		return gothamBounds;
 	}
-	
+
 	public void setGothamBounds(LocationBounds gothamBounds) {
 		this.gothamBounds = gothamBounds;
 	}
 
-	public String getGoogleApikey() {
-		return googleApikey;
+	public String getGoogleApiKey() {
+		return googleApiKey;
 	}
 
-	public void setGoogleApikey(String googleApikey) {
-		this.googleApikey = googleApikey;
+	public void setGoogleApiKey(String googleApiKey) {
+		this.googleApiKey = googleApiKey;
 	}
 
+	@Override
+	public String toString(){
+		return "RadiusPlacesSearch: " + this.radiusPlacesSearch + ", RadiusJokerAttack: " + this.radiusJokerAttack +
+			", googleApiKey: " + this.googleApiKey;
+	}
 }

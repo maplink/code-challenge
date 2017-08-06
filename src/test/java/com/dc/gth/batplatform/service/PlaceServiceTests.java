@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
@@ -20,6 +21,7 @@ import com.dc.gth.batplatform.model.Place;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@TestPropertySource(locations="classpath:test.properties")
 public class PlaceServiceTests {
 	@MockBean
 	GeoutilsService geoutilsService;
@@ -34,7 +36,7 @@ public class PlaceServiceTests {
 	public void shouldGetNearbyPlacesInsideGotham(){
 		Coordinate requestedLocation = new Coordinate(40.75661990450191, -73.98845672607422);
 		LocationBounds gothamBounds = this.appConfiguration.getGothamBounds();
-		Integer radiusSearchLimit = this.appConfiguration.getRadiusPlaceSearch();
+		Integer radiusSearchLimit = this.appConfiguration.getRadiusPlacesSearch();
 		given(this.geoutilsService.containsLocation(any(), any())).willReturn(true);
 		
 		List<Place> places = this.placeService.getNearbyPlaces(requestedLocation, radiusSearchLimit, gothamBounds).collect(Collectors.toList());

@@ -25,7 +25,7 @@ public class GoogleGeocodingService implements GeocodingService{
 	
 	@Override
 	public Optional<Coordinate> getCoordinateByAddress(String address) {
-		GeoApiContext context = new GeoApiContext.Builder().apiKey(this.appConfiguration.getGoogleApikey()).build();
+		GeoApiContext context = new GeoApiContext.Builder().apiKey(this.appConfiguration.getGoogleApiKey()).build();
 		try {
 			GeocodingResult[] results = GeocodingApi
 					.geocode(context, address).await();
@@ -39,7 +39,7 @@ public class GoogleGeocodingService implements GeocodingService{
 
 	@Override
 	public Optional<Coordinate> getCoordinateByLocation(String location) {
-		GeoApiContext context = new GeoApiContext.Builder().apiKey(this.appConfiguration.getGoogleApikey()).build();
+		GeoApiContext context = new GeoApiContext.Builder().apiKey(this.appConfiguration.getGoogleApiKey()).build();
 		try {
 			GeocodingResult[] results = GeocodingApi.newRequest(context)
 					.components(ComponentFilter.locality(location))

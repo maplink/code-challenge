@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
+import static org.assertj.core.api.Assertions.*;
 import com.dc.gth.batplatform.model.Coordinate;
 import com.dc.gth.batplatform.model.LocationBounds;
 
@@ -37,4 +37,13 @@ public class GeoutilsServiceTests {
 		
 		assertFalse(isInside);
 	}
+	
+	@Test
+	public void shouldCalculateDistance(){
+		
+		Double distance = this.geoutilsService.haversineDistance(new Coordinate(40.746489872673846, -73.94090362548828), new Coordinate(40.753499070431374, -73.97987365722656));
+		
+		assertThat(distance).isCloseTo(3380, offset(13.7));
+	}
+	
 }
