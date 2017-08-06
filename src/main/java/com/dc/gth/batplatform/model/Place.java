@@ -4,6 +4,11 @@ public class Place {
 	private String name;
 	private Coordinate location;
 
+	public Place(String name, Coordinate location){
+		this.name = name;
+		this.location = location;
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -4,6 +4,11 @@ public class Coordinate {
 	private Double lat;
 	private Double lng;
 	
+	public Coordinate(Double latitude, Double longitude){
+		this.lat = latitude;
+		this.lng = longitude;
+	}
+	
 	public Double getLat() {
 		return lat;
 	}

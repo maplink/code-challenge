@@ -5,6 +5,12 @@ public class TargetAttack {
 	private Coordinate location;
 	private Double probability;
 	
+	public TargetAttack(String place, Coordinate location, Double probability){
+		this.place = place;
+		this.location = location;
+		this.probability = probability;
+	}
+	
 	public String getPlace() {
 		return place;
 	}

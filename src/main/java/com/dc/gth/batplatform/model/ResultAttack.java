@@ -6,6 +6,11 @@ public class ResultAttack {
 	private Villain villain;
 	private Collection<TargetAttack> targets;
 	
+	public ResultAttack(Villain villain, Collection<TargetAttack> targets){
+		this.villain = villain;
+		this.targets = targets;
+	}
+	
 	public Villain getVillain() {
 		return villain;
 	}

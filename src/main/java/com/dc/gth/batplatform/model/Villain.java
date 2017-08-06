@@ -4,6 +4,11 @@ public class Villain {
 	private String name;
 	private Coordinate location;
 	
+	public Villain(String name, Coordinate location){
+		this.name = name;
+		this.location = location;
+	}
+	
 	public String getName() {
 		return name;
 	}
