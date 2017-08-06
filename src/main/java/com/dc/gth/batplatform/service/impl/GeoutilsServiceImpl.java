@@ -1,5 +1,9 @@
 package com.dc.gth.batplatform.service.impl;
 
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.dc.gth.batplatform.model.Coordinate;
@@ -8,6 +12,7 @@ import com.dc.gth.batplatform.service.GeoutilsService;
 
 @Service
 public class GeoutilsServiceImpl implements GeoutilsService {
+	private final static Logger LOGGER = LoggerFactory.getLogger(GeoutilsServiceImpl.class);
 	public static final Double R = 6372.8; // In kilometers
 
 	@Override
@@ -25,5 +30,16 @@ public class GeoutilsServiceImpl implements GeoutilsService {
 		
 		return targetLatitude >= bounds.getSouthWest().getLat() && targetLatitude <= bounds.getNorthEast().getLat()
 				&& targetLongitude >= bounds.getSouthWest().getLng() && targetLongitude <= bounds.getNorthEast().getLng();
+	}
+
+	@Override
+	public Optional<Coordinate> getCoordinateFromString(String coordinate) {
+		try{
+			String[] coordinates = coordinate.split(",");
+			return Optional.of( new Coordinate(Double.valueOf(coordinates[0].trim()), Double.valueOf(coordinates[1].trim())) );
+		}catch(Exception e){
+			LOGGER.debug("getCoordinateFromString", e);
+			return Optional.empty();
+		}
 	}
 }

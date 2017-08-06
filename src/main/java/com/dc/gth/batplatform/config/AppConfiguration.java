@@ -11,6 +11,7 @@ public class AppConfiguration {
 	private Integer radiusPlaceSearch;
 	private Integer radiusJokerAttack;
 	private LocationBounds gothamBounds;
+	private String googleApikey;
 	
 	public Integer getRadiusPlaceSearch() {
 		return radiusPlaceSearch;
@@ -36,6 +37,12 @@ public class AppConfiguration {
 		this.gothamBounds = gothamBounds;
 	}
 
+	public String getGoogleApikey() {
+		return googleApikey;
+	}
+
+	public void setGoogleApikey(String googleApikey) {
+		this.googleApikey = googleApikey;
+	}
+
 }
-
-

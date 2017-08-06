@@ -45,7 +45,7 @@ public class JokerAttackService implements VillainAttackService{
 				.map(target -> new TargetAttack(target.getName(),target.getLocation(), this.calculateAttackProbability(villainLocation, target.getLocation())) )
 				.collect(Collectors.toList());
 		
-		return new ResultAttack(new Villain("Joker",villainLocation), targets);
+		return new ResultAttack(new Villain("Joker", villainLocation), targets);
 	}
 
 	public Double calculateAttackProbability(Coordinate villainLocation, Coordinate location) {

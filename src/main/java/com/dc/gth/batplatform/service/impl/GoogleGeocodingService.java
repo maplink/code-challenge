@@ -2,9 +2,13 @@ package com.dc.gth.batplatform.service.impl;
 
 import java.util.Optional;
 
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import com.dc.gth.batplatform.config.AppConfiguration;
 import com.dc.gth.batplatform.model.Coordinate;
 import com.dc.gth.batplatform.service.GeocodingService;
 import com.google.maps.GeoApiContext;
@@ -16,9 +20,12 @@ import com.google.maps.model.GeocodingResult;
 public class GoogleGeocodingService implements GeocodingService{
 	private final static Logger LOGGER = LoggerFactory.getLogger(GoogleGeocodingService.class);
 	
+	@Inject
+	AppConfiguration appConfiguration;
+	
 	@Override
 	public Optional<Coordinate> getCoordinateByAddress(String address) {
-		GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyD2I6kTBjEbf4mRTck16QdxBiMO--446cA").build();
+		GeoApiContext context = new GeoApiContext.Builder().apiKey(this.appConfiguration.getGoogleApikey()).build();
 		try {
 			GeocodingResult[] results = GeocodingApi
 					.geocode(context, address).await();
@@ -32,7 +39,7 @@ public class GoogleGeocodingService implements GeocodingService{
 
 	@Override
 	public Optional<Coordinate> getCoordinateByLocation(String location) {
-		GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyD2I6kTBjEbf4mRTck16QdxBiMO--446cA").build();
+		GeoApiContext context = new GeoApiContext.Builder().apiKey(this.appConfiguration.getGoogleApikey()).build();
 		try {
 			GeocodingResult[] results = GeocodingApi.newRequest(context)
 					.components(ComponentFilter.locality(location))
