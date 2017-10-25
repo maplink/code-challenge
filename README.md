@@ -4,15 +4,24 @@ Read the latest news of the [Gotham City Gazette](NEWS.md) !
 
 ## Purpose of our challenges
 
-According to your skills, we want to understand the way you think to solve problems, how you organize your code and what technologies you feel more comfortable to use in the daily tasks.
+According to your skills, we want to understand 
+* your problem solving capabilities 
+* how you organize your code
+* how you appreciate quality
+* what technologies you feel comfortable using on a daily basis.
+
+If you are able to discover the 'blind spots', you will help Batman keep Gotham City safe.
 
 ## Choose your challenge
 
-We built challenges with specific focus in each knowledge area, choose the one that is most closely associated with your professional characteristics and wishes:
+We have specified the following challenges focusing on some specialist areas for software development.
+Choose the one that best associated with your profession, experience and/or wishes:
 
 [Back-end challenge](BACKEND.md)
 
 [Front-end challenge](FRONTEND.md)
+
+[QA challenge](QA.md)
 
 ## Instructions in your README
 
