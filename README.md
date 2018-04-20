@@ -14,6 +14,8 @@ We built challenges with specific focus in each knowledge area, choose the one t
 
 [Front-end challenge](FRONTEND.md)
 
+[QA challenge](QA.md)
+
 ## Instructions in your README
 
 Describe in README.md file important instructions, for example:
